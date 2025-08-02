@@ -6,13 +6,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Karina Brandão | Corretora de Imóveis</title>
     <style>
+        :root {
+        --min-width: 230px;
+        --max-width: 460px;
+        --height: 130px;
+
+        --color-blue-50: #fdf7d0;
+        --color-blue-100: #3b3a31;
+        --color-blue-dark: #e67e22;
+        --color-blue-light: #a77e59;
+        --color-purple-dark: #5e3614;
+        --color-purple-light: #e9c5a6;
+        --color-pink: #f2a9c6;
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+        @font-face {
+            font-family: Runtime;
+            src: url("runtime.otf");
+        }
         body {
             background-color: #f9f9f9;
             color: #333;
@@ -35,7 +51,21 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+        #linha{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        #linha::before{
+            display: flex;
+            content: "";
+            height: 3px;
+            width: 15%;
+            background: #e67e22;
+            border-radius: 10px;
+            margin: 30px 0px;
+        }
         nav {
             display: flex;
             justify-content: space-between;
@@ -69,7 +99,7 @@
         
         /* Hero Section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: url('office.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
@@ -90,7 +120,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.801) , rgba(0, 0, 0, 0.26));
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.801) , rgba(0, 0, 0, 0.405));
         }
         .hero::after {
             content: '';
@@ -99,7 +129,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(18, 19, 11, 0.747) 50%, rgba(18, 19, 11, 0) 55%);
+            background: linear-gradient(to right, rgba(18, 19, 11, 0.788) 50%, rgba(18, 19, 11, 0) 57%);
         }
         
         .hero-content {
@@ -114,14 +144,14 @@
             transition: opacity 1s, transform 1s;
         }
         .lado-esquerdo{
-            width: 50%;
+            width: 40%;
             display: flex;
             align-items: start;
             justify-content: center;
             flex-direction: column;
         }
         .lado-direito{
-            width: 50%;
+            width: 60%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -184,7 +214,6 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
             font-size: 36px;
             color: #2c3e50;
         }
@@ -465,7 +494,14 @@
         .social-links a:hover {
             color: #f39c12;
         }
-        
+        @media screen and (max-width: 768px){
+            .hero-content{
+                flex-direction: column;
+            }
+            .lado-esquerdo, .lado-direito{
+                width: 100%;
+            }
+        }
         /* Animação ao rolar */
         @keyframes fadeInUp {
             from {
@@ -477,6 +513,397 @@
                 transform: translateY(0);
             }
         }
+        #titulo{
+            font-family: Runtime;
+        }
+        #titulo strong{
+            color: #f39c12;
+                        font-family: Runtime;
+        }
+
+        /*house */
+        .house.fade-in {
+            opacity: 1;
+        }
+        #house-espaco{
+        }
+        .house {
+            opacity: 0;
+            z-index: 3;
+             transform: scale(0.3); /* Reduz para 80% do tamanho */
+            transform-origin: top; 
+        min-width: var(--min-width);
+        max-width: var(--max-width);
+        container: house / inline-size;
+        resize: horizontal;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        top: 0;
+        justify-content: flex-end;
+        flex-direction: column;
+        }
+
+        .rooms {
+        background: linear-gradient(
+            0deg,
+            var(--color-blue-dark) 0%,
+            var(--color-blue-light) 70%
+        );
+        height: var(--height);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 28px;
+        box-shadow: inset 0px 16px 0px 0 rgb(73 75 198 / 20%);
+        }
+        .roof {
+        position: relative;
+        }
+        .roof-top {
+        width: 100%;
+        height: 45px;
+        background: linear-gradient(
+            0deg,
+            var(--color-blue-light) 0%,
+            var(--color-blue-100) 100%
+        );
+        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        }
+        .roof-base {
+        width: 100%;
+        height: 20px;
+        background: var(--color-blue-dark);
+        }
+        .chimney {
+        height: 45px;
+        width: 30px;
+        background: var(--color-blue-light);
+        position: absolute;
+        top: -45px;
+        right: 20%;
+        transition: right .25s;
+        }
+        .chimney:before {
+        content: '';
+        background: var(--color-blue-100);
+        height: 12px;
+        width: 40px;
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        }
+        .entrance {
+        width: 165px;
+        height: 260px;
+        background: linear-gradient(
+            -45deg,
+            var(--color-purple-dark) 0%,
+            var(--color-purple-light) 70%
+        );
+        position: absolute;
+        bottom: 0;
+        transform: translateX(-50%);
+        left: 50%;
+        clip-path: polygon(50% 0, 100% 30%, 100% 100%, 0 100%, 0 30%);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        }
+
+        .entrance-roof {
+        --size: 140px;
+        width: var(--size);
+        height: var(--size);
+        border: solid 20px var(--color-blue-dark);
+        position: absolute;
+        bottom: 100px;
+        transform: rotate(45deg);
+        left: calc(50% - (var(--size) / 2));
+        border-bottom: none;
+        border-right: none;
+        box-shadow: inset 20px 20px 0px -6px rgb(73 75 198 / 20%);
+        }
+        .shadow {
+        position: absolute;
+        width: 100%;
+        transform: rotate(-45deg);
+        bottom: -64px;
+        height: 165px;
+        left: 72px;
+        box-shadow: 0 0 0px 13px rgb(73 75 198 / 20%);
+        }
+        .windows {
+        display: flex;
+        }
+        .windows:last-child {
+        transform: scaleX(-1);
+        }
+        .window {
+        background: var(--color-pink);
+        width: 36px;
+        height: 54px;
+        opacity: 0;
+        transition: opacity, transform 0.25s;
+        position: relative;
+        transform: translateX(50px);
+        }
+        .window:before {
+        content: '';
+        position: absolute;
+        height: 10px;
+        width: 43px;
+        background: var(--color-blue-dark);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        }
+        .window:first-child {
+        margin-right: 20px;
+        }
+        .entrance-door {
+        height: 70px;
+        width: 38px;
+        background: var(--color-blue-dark);
+        }
+        .entrance-stairs {
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        }
+        .stair {
+        height: 10px;
+        width: 100%;
+        }
+        .stair-1 {
+        background: hsl(109, 33%, 22%);
+        }
+        .stair-2 {
+        background: hsl(23, 82%, 80%);
+        width: 80%;
+        }
+        .stair-3 {
+        background: hsl(31, 82%, 83%);
+        width: 60%;
+        }
+
+        .entrance-window {
+        width: 54px;
+        height: 54px;
+        background: var(--color-blue-50);
+        position: relative;
+        border-radius: 50%;
+        margin-bottom: 36px;
+        transition: border-radius 0.25s;
+        }
+        .entrance-window:before {
+        content: '';
+        position: absolute;
+        width: 62px;
+        height: 10px;
+        background: var(--color-blue-dark);
+        opacity: 0;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        }
+        @container house (min-width: 350px) {
+        .chimney {
+            right: 15%;
+        }
+        .window-first {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .entrance-window {
+            border-radius: 0;
+            height: 45px;
+        }
+        .entrance-window:before {
+            opacity: 1;
+        }
+        }
+        @container house (min-width: 250px) {
+        .window-last {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        }
+
+        /* scene */
+        .ground {
+        height: 150px;
+        width: 100%;
+        background: #414363;
+        }
+
+        .sun {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        top: -10px;
+        left: -10px;
+        background: hsl(298deg 70% 92% / 100%);
+        border-radius: 50%;
+        box-shadow: 0px 0px 0 10px hsl(298deg 70% 92% / 53%),
+            0px 0px 0 20px hsl(298deg 70% 92% / 30%);
+        animation: sunshine 30s linear infinite;
+        }
+
+        .sun svg {
+        scale: 2;
+        }
+        .sun svg path {
+        fill: #d0bef6;
+        }
+        .cloud {
+        height: 40px;
+        border-radius: 20px;
+        width: 360px;
+        position: absolute;
+        background: linear-gradient(90deg, #9499f4 0%, #989bf5 100%);
+        opacity: 0.8;
+        top: 180px;
+        left: 0;
+        animation: windBlow 30s linear infinite;
+        z-index: -1;
+        }
+        .cloud-small {
+        top: 105px;
+        height: 20px;
+        left: 200px;
+        width: 500px;
+        animation: windBlow-small 35s linear infinite;
+        }
+        .cloud-bottom {
+        top: 260px;
+        left: 600px;
+        width: 400px;
+        animation: windBlow-bottom 35s linear infinite;
+        }
+
+        .star {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #fdfdff;
+        top: 40px;
+        left: 45vw;
+        z-index: -1;
+        animation: flicker 1.5s linear infinite;
+        }
+        .star:nth-child(1) {
+        scale: 0.6;
+        animation-delay: 0.3s;
+        }
+        .star:nth-child(2) {
+        top: 96px;
+        left: 62vw;
+        animation-delay: 0.5s;
+        }
+        .star:nth-child(3) {
+        top: 159px;
+        left: 77vw;
+        scale: 0.6;
+        animation-delay: 1s;
+        }
+        .star:nth-child(4) {
+        top: 359px;
+        left: 81vw;
+        scale: 0.7;
+        animation-delay: 0.5s;
+        }
+        .star:nth-child(5) {
+        top: 208px;
+        left: 51vw;
+        scale: 0.6;
+        }
+        .star:nth-child(6) {
+        top: 290px;
+        left: 20vw;
+        scale: 0.6;
+        animation-delay: 1s;
+        }
+        .star:nth-child(7) {
+        top: 339px;
+        left: 7vw;
+        scale: 0.6;
+        animation-delay: 0.3s;
+        }
+        body:hover .hint {
+        display: none;
+        }
+        .hint {
+        color: #abff62;
+        position: absolute;
+        left: calc(50vw + 125px);
+        bottom: calc(150px - 20px);
+        font-family: sans-serif;
+        }
+        .hint svg {
+        transform: rotate(130deg) translate(7px, 0px);
+        }
+
+        @keyframes sunshine {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        }
+
+        @keyframes windBlow {
+        0% {
+            transform: translateX(100vw);
+        }
+        100% {
+            transform: translateX(-360px);
+        }
+        }
+
+        @keyframes windBlow-small {
+        0% {
+            transform: translateX(100vw);
+        }
+        100% {
+            transform: translateX(-700px);
+        }
+        }
+
+        @keyframes windBlow-bottom {
+        0% {
+            transform: translateX(100vw);
+        }
+        100% {
+            transform: translateX(-1000px);
+        }
+        }
+
+        @keyframes flicker {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+    #house-espaco{
+        top: 0;
+        width: 100%;
+        display: flex;
+        height: 300px;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+    }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -486,9 +913,13 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+
         <div class="container">
+                
+            </div>
             <div class="hero-content">
                 <div class="lado-esquerdo">
+                    <h1 id="titulo">Karine <strong>Brandão</strong></h1>
                     <h1>Encontre o Imóvel dos Seus Sonhos</h1>
                     <p>Karina Brandão oferece as melhores oportunidades no mercado imobiliário com atendimento personalizado e transparente.</p>
                     <a href="#contact" class="btn"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
@@ -502,8 +933,42 @@
 
     <!-- About Section -->
     <section id="about" class="about">
+        <div id="house-espaco">
+            <div class="house" id="house">
+                <div class="roof">
+                    <div class="chimney"></div>
+                    <div class="roof-top"></div>
+                    <div class="roof-base"></div>
+                </div>
+                <div class="rooms">
+                    <div class="windows">
+                    <div class="window window-last"></div>
+                    <div class="window window-first"></div>
+                    </div>
+                    <div class="windows">
+                    <div class="window window-last"></div>
+                    <div class="window window-first"></div>
+                    </div>
+                </div>
+                <div class="entrance-roof hidden">
+                    <div class="shadow"></div>
+                </div>
+                <div class="entrance">
+                    <div class="entrance-window"></div>
+                    <div class="entrance-door"></div>
+                    <div class="entrance-stairs">
+                    <div class="stair stair-3"></div>
+                    <div class="stair stair-2"></div>
+                    <div class="stair stair-1"></div>
+                    </div>
+                </div>
+                <div class="entrance-roof">
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">Sobre Karina Brandão</h2>
+            <div id="linha"></div>
             <div class="about-content">
                 <div class="about-img">
                     <img src="karine2.jpg" alt="Karina Brandão">
@@ -522,6 +987,7 @@
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">Nossos Serviços</h2>
+            <div id="linha"></div>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-home"></i>
@@ -551,6 +1017,7 @@
     <section id="properties" class="properties">
         <div class="container">
             <h2 class="section-title">Imóveis em Destaque</h2>
+            <div id="linha"></div>
             <div class="properties-grid">
                 <div class="property-card">
                     <div class="property-img">
@@ -590,6 +1057,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
+            <div id="linha"></div>
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Fale com Karina Brandão</h3>
@@ -649,7 +1117,7 @@
     <!-- Script para animação ao rolar -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.about, .services, .properties, .contact');
+            const sections = document.querySelectorAll('.about, .services, .properties, .contact, .house');
             
             function checkScroll() {
                 sections.forEach(section => {
@@ -658,6 +1126,13 @@
                     
                     if (sectionTop < windowHeight - 100) {
                         section.classList.add('fade-in');
+                        if(section.id == "house"){
+                            for(var i=1; i<4; i++){
+                            setTimeout(() =>{
+                                section.style.width = (1*i)+"00px";
+                            }, 800)
+                            }                            
+                        }
                     }
                 });
             }
