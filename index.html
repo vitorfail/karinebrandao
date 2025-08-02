@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Karina Brandão | Corretora de Imóveis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #19314b, #234569);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #f39c12;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+        .hero .container{
+            margin: 0;
+        }
+        .hero .btn{
+            font-size: 20px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.801) , rgba(0, 0, 0, 0.26));
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(18, 19, 11, 0.747) 50%, rgba(18, 19, 11, 0) 55%);
+        }
+        
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+        .lado-esquerdo{
+            width: 50%;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .lado-direito{
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .lado-direito .imagem{
+            width: initial;
+            height: 700px;
+        }
+        
+        .hero-content.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            text-align: start;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            text-align: start;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            width: 100%;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+        .properties .contact{
+            margin-top: 0;
+        }
+        .about.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #2c3e50;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+        }
+        
+        .about-img img:hover {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Services Section */
+        .services {
+            background-attachment: fixed;
+            background-image: url("predio.jpg");
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            opacity: 0;
+            height: 900px;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+        .services .container{
+            padding: 100px 0px;
+        }
+        .services.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card i {
+            font-size: 40px;
+            color: #f39c12;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Properties Section */
+        .properties {
+            padding: 100px 0px;
+            background: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .properties.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .property-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .property-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+        
+        .property-info {
+            padding: 20px;
+        }
+        
+        .property-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .property-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .property-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+        
+        .contact.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-info div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            font-size: 20px;
+            color: #f39c12;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .contact-form .btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #f39c12;
+        }
+        
+        /* Animação ao rolar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="lado-esquerdo">
+                    <h1>Encontre o Imóvel dos Seus Sonhos</h1>
+                    <p>Karina Brandão oferece as melhores oportunidades no mercado imobiliário com atendimento personalizado e transparente.</p>
+                    <a href="#contact" class="btn"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+                </div>
+                <div class="lado-direito">
+                    <img src="karine.png" alt="Karine" class="imagem"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Karina Brandão</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="karine2.jpg" alt="Karina Brandão">
+                </div>
+                <div class="about-text">
+                    <h3>Expertise e Dedicação em Cada Negócio</h3>
+                    <p>Karina Brandão é uma corretora de imóveis com mais de 10 anos de experiência no mercado, ajudando clientes a encontrar o lar perfeito ou o melhor investimento.</p>
+                    <p>Com um atendimento personalizado e transparente, Karina garante que cada negociação seja feita com segurança e satisfação.</p>
+                    <p>Seja para compra, venda ou locação, conte com a profissionalismo e dedicação de quem entende do assunto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Compra de Imóveis</h3>
+                    <p>Te ajudamos a encontrar a casa dos seus sonhos com as melhores condições de negociação.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Venda de Imóveis</h3>
+                    <p>Maximizamos o valor do seu imóvel com estratégias de marketing e negociação especializada.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-key"></i>
+                    <h3>Aluguel</h3>
+                    <p>Encontre o imóvel ideal para locação ou coloque o seu para alugar com segurança.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Avaliação de Imóveis</h3>
+                    <p>Saiba o valor real do seu imóvel no mercado com uma avaliação profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties" class="properties">
+        <div class="container">
+            <h2 class="section-title">Imóveis em Destaque</h2>
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casa de Luxo">
+                    </div>
+                    <div class="property-info">
+                        <h3>Casa de Luxo - Jardins</h3>
+                        <p>4 quartos, 3 banheiros, 300m²</p>
+                        <p class="property-price">R$ 2.500.000</p>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Apartamento Moderno">
+                    </div>
+                    <div class="property-info">
+                        <h3>Apartamento Moderno</h3>
+                        <p>3 quartos, 2 banheiros, 120m²</p>
+                        <p class="property-price">R$ 950.000</p>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cobertura com Vista para o Mar">
+                    </div>
+                    <div class="property-info">
+                        <h3>Cobertura à Beira-Mar</h3>
+                        <p>3 quartos, 3 banheiros, 200m²</p>
+                        <p class="property-price">R$ 3.200.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Fale com Karina Brandão</h3>
+                    <p>Estamos prontos para te ajudar a encontrar o imóvel perfeito ou tirar todas as suas dúvidas.</p>
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>(XX) XXXX-XXXX</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@karinabrandao.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>São Paulo - SP</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2023 Karina Brandão - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para animação ao rolar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.about, .services, .properties, .contact');
+            
+            function checkScroll() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight - 100) {
+                        section.classList.add('fade-in');
+                    }
+                });
+            }
+            
+            // Verifica ao carregar
+            checkScroll();
+            
+            // Verifica ao rolar
+            window.addEventListener('scroll', checkScroll);
+            
+            // Hero animation
+            const heroContent = document.querySelector('.hero-content');
+            setTimeout(() => {
+                heroContent.classList.add('fade-in');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
