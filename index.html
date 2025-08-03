@@ -137,7 +137,8 @@
             justify-content: space-between;
             position: relative;
             z-index: 1;
-            max-width: 100%;
+            max-width: 80%;
+            height: 80vh;
             margin: 0 auto;
             opacity: 0;
             transform: translateY(30px);
@@ -159,7 +160,7 @@
         }
         .lado-direito .imagem{
             width: initial;
-            height: 700px;
+            height: 100%;
         }
         
         .hero-content.fade-in {
@@ -258,18 +259,11 @@
         
         /* Services Section */
         .services {
-            background-attachment: fixed;
-            background-image: url("predio.jpg");
-            background-position: 50%;
-            background-repeat: no-repeat;
             background-size: 100%;
             opacity: 0;
-            height: 900px;
+            padding: 50px 0px;
             transform: translateY(30px);
             transition: opacity 1s, transform 1s;
-        }
-        .services .container{
-            padding: 100px 0px;
         }
         .services.fade-in {
             opacity: 1;
@@ -497,9 +491,44 @@
         @media screen and (max-width: 768px){
             .hero-content{
                 flex-direction: column;
+                height: fit-content;
+            }
+            .hero::after{
+                background: none;
+            }
+            .lado-esquerdo >h1, p, .hero p{
+                text-align: center;
+            }
+            .lado-esquerdo >h1{
+                font-size: 220%;
+            }
+            .lado-esquerdo >p{
+                font-size: 100%;
             }
             .lado-esquerdo, .lado-direito{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 width: 100%;
+            }
+            .lado-direito{
+                height: 60%;
+            }
+            .lado-direito .imagem{
+                height: 450px;
+            }
+            .hero{
+                display: flex;
+                justify-content: end;
+                height: 100vh;
+                align-items: end;
+            }
+            .about-content{
+                flex-direction: column;
+                justify-self: center;
+            }
+            .about-text p{
+                font-size: 100%;
             }
         }
         /* Animação ao rolar */
@@ -914,9 +943,6 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
 
-        <div class="container">
-                
-            </div>
             <div class="hero-content">
                 <div class="lado-esquerdo">
                     <h1 id="titulo">Karine <strong>Brandão</strong></h1>
@@ -928,7 +954,6 @@
                     <img src="karine.png" alt="Karine" class="imagem"/>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- About Section -->
@@ -1074,28 +1099,6 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <span>São Paulo - SP</span>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Envie uma Mensagem</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefone</label>
-                            <input type="tel" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
                 </div>
             </div>
         </div>
