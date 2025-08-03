@@ -57,6 +57,12 @@
             align-items: center;
             justify-content: center;
         }
+        .about #linha{
+            justify-content: flex-start;
+        }
+        .about #linha::before{
+            width: 35%;
+        }
         #linha::before{
             display: flex;
             content: "";
@@ -110,9 +116,6 @@
         .hero .container{
             margin: 0;
         }
-        .hero .btn{
-            font-size: 20px;
-        }
         .hero::before {
             content: '';
             position: absolute;
@@ -129,7 +132,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(18, 19, 11, 0.788) 50%, rgba(18, 19, 11, 0) 57%);
+            background: linear-gradient(to right, rgba(18, 19, 11, 0.925) 50%, rgba(18, 19, 11, 0) 57%);
         }
         
         .hero-content {
@@ -137,7 +140,7 @@
             justify-content: space-between;
             position: relative;
             z-index: 1;
-            max-width: 80%;
+            max-width: 1200px;
             height: 80vh;
             margin: 0 auto;
             opacity: 0;
@@ -169,24 +172,76 @@
         }
         
         .hero h1 {
-            font-size: 48px;
             text-align: start;
             margin-bottom: 20px;
         }
-        
+        .hero h1, .about h3{
+            font-size: 41px;
+        }
+        .btn::before{
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: flex;
+            content: "";
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            opacity: 0.7;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(219, 208, 52, 0.751);
+            }
+            50% {
+                box-shadow: 0 0 0 18px rgba(52, 152, 219, 0);
+            }        
+        }
         .hero p {
             font-size: 20px;
             text-align: start;
             margin-bottom: 30px;
         }
-        
-        .btn {
-            display: inline-block;
+        .hero .btn{
             background: #f39c12;
+        }
+        .about .btn{
+            background: #0452c6;
+        }
+        .about .btn::before{
+            top: 0;
+            left: 0;
+            position: absolute;
+            display: flex;
+            content: "";
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            opacity: 0.7;
+            border-radius: 10px;
+            animation: pulse2 2s infinite;
+        }
+        @keyframes pulse2 {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(52, 191, 219, 0.751);
+            }
+            50% {
+                box-shadow: 0 0 0 18px rgba(52, 152, 219, 0);
+            }        
+        }
+        .btn {
+            position: relative;
+            display: inline-block;
             color: white;
             width: 100%;
+            font-size: 25px;
             padding: 12px 30px;
-            border-radius: 5px;
+            border-radius: 10px;
+            text-align: center;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
@@ -245,14 +300,20 @@
         .about-text {
             flex: 1;
         }
-        
-        .about-text h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+        .about #h3{
+            display: none;
+        }
+        .about h3 {
             color: #3498db;
         }
-        
+        .hero #linha{
+            justify-content: flex-start;
+        }
+        .hero #linha::before{
+            width: 40%;
+        }
         .about-text p {
+            font-size: 20px;
             margin-bottom: 15px;
             line-height: 1.6;
         }
@@ -490,6 +551,7 @@
         }
         @media screen and (max-width: 768px){
             .hero-content{
+                width: 90%;
                 flex-direction: column;
                 height: fit-content;
             }
@@ -530,6 +592,19 @@
             .about-text p{
                 font-size: 100%;
             }
+            .about #h3{
+                text-align: center;
+                display: flex;
+            }
+            .about h3:last-of-type{
+                display: none;
+            }
+            .hero #linha{
+                display: none;
+            }
+            .about #linha{
+                display: none;
+            }
         }
         /* Animação ao rolar */
         @keyframes fadeInUp {
@@ -544,6 +619,7 @@
         }
         #titulo{
             font-family: Runtime;
+                height: 28px;
         }
         #titulo strong{
             color: #f39c12;
@@ -946,9 +1022,10 @@
             <div class="hero-content">
                 <div class="lado-esquerdo">
                     <h1 id="titulo">Karine <strong>Brandão</strong></h1>
+                    <div id="linha"></div>
                     <h1>Encontre o Imóvel dos Seus Sonhos</h1>
                     <p>Karina Brandão oferece as melhores oportunidades no mercado imobiliário com atendimento personalizado e transparente.</p>
-                    <a href="#contact" class="btn"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+                    <a href="https://api.whatsapp.com/send/?phone=555199917700&text&type=phone_number&app_absent=0" class="btn"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
                 </div>
                 <div class="lado-direito">
                     <img src="karine.png" alt="Karine" class="imagem"/>
@@ -958,22 +1035,20 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div id="house-espaco">
-
-        </div>
         <div class="container">
-            <h2 class="section-title">Sobre Karina Brandão</h2>
-            <div id="linha"></div>
+            <h3 id="h3">Expertise e Dedicação em Cada Negócio</h3>
             <div class="about-content">
                 <div class="about-img">
                     <img src="karine2.jpg" alt="Karina Brandão">
                 </div>
                 <div class="about-text">
                     <h3>Expertise e Dedicação em Cada Negócio</h3>
-                    <p>Karina Brandão é uma corretora de imóveis com mais de 10 anos de experiência no mercado, ajudando clientes a encontrar o lar perfeito ou o melhor investimento.</p>
-                    <p>Com um atendimento personalizado e transparente, Karina garante que cada negociação seja feita com segurança e satisfação.</p>
-                    <p>Seja para compra, venda ou locação, conte com a profissionalismo e dedicação de quem entende do assunto.</p>
+                    <div id="linha"></div>
+                    <p>Minha história de vida poderia ter me levado por ​muitos caminhos, mas a resiliência e a vontade de ​vencer me fizeram seguir um rumo de sucesso. ​Comecei a trabalhar aos 14 anos e aos 17 já ​sustentava a casa enquanto minha mãe enfrentava ​a doença de Parkinson.</p>
+                    <p>Estou no ramo imobiliário há 26 anos, com vasta ​experiência em imóveis de luxo. Como uma gaúcha ​apaixonada por Santa Catarina, realizei em 2024 o ​sonho de morar em Itapema. Estar nesta cidade ​maravilhosa tem sido uma bênção, pela qual agradeço ​a Deus todos os dias.</p>
+                    <a href="https://api.whatsapp.com/send/?phone=555199917700&text&type=phone_number&app_absent=0" class="btn"><i class="fab fa-whatsapp"></i> Fale Com Especialista</a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1078,10 +1153,10 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/karine.brandao.754"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/karinebrandaocorretora/"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=555199917700&text&type=phone_number&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/karine-hamester-brandao-b23ab633/"><i class="fab fa-linkedin"></i></a>
             </div>
             <p>&copy; 2023 Karina Brandão - Todos os direitos reservados.</p>
         </div>
