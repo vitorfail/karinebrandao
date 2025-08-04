@@ -549,63 +549,7 @@
         .social-links a:hover {
             color: #f39c12;
         }
-        @media screen and (max-width: 768px){
-            .hero-content{
-                width: 90%;
-                flex-direction: column;
-                height: fit-content;
-            }
-            .hero::after{
-                background: none;
-            }
-            .lado-esquerdo >h1, p, .hero p{
-                text-align: center;
-            }
-            .lado-esquerdo >h1{
-                font-size: 220%;
-            }
-            .lado-esquerdo >p{
-                font-size: 100%;
-            }
-            .lado-esquerdo, .lado-direito{
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-            }
-            .lado-direito{
-                height: 60%;
-            }
-            .lado-direito .imagem{
-                height: 450px;
-            }
-            .hero{
-                display: flex;
-                justify-content: end;
-                height: 100vh;
-                align-items: end;
-            }
-            .about-content{
-                flex-direction: column;
-                justify-self: start;
-            }
-            .about-text p{
-                font-size: 100%;
-            }
-            .about #h3{
-                text-align: center;
-                display: flex;
-            }
-            .about h3:last-of-type{
-                display: none;
-            }
-            .hero #linha{
-                display: none;
-            }
-            .about #linha{
-                display: none;
-            }
-        }
+
         /* Animação ao rolar */
         @keyframes fadeInUp {
             from {
@@ -618,8 +562,9 @@
             }
         }
         #titulo{
+            margin: 0;
             font-family: Runtime;
-                height: 28px;
+                height: auto;
         }
         #titulo strong{
             color: #f39c12;
@@ -1009,6 +954,93 @@
         justify-content: center;
         align-items: center;
     }
+    #timedate {
+        font: small-caps lighter 43px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        text-align:left;
+        font-weight: 100;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color:#fff;
+        border-left: 3px solid #ed1f24;
+        padding: 10px;
+        margin-bottom: 10px;
+        }
+    #timedate a{
+        font-size: 18px;
+    } 
+    #timedate a{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding-right: 10px;
+    }
+    #timedate .hora, #timedate .dia{
+        height: 30px;
+        display: flex;
+        justify-content: center;
+    }
+            @media screen and (max-width: 768px){
+            .hero-content{
+                width: 90%;
+                flex-direction: column;
+                height: fit-content;
+            }
+            .hero::after{
+                background: none;
+            }
+            .lado-esquerdo >h1, p, .hero p{
+                text-align: center;
+            }
+            .lado-esquerdo >h1{
+                font-size: 220%;
+            }
+            .lado-esquerdo >p{
+                font-size: 100%;
+            }
+            .lado-esquerdo, .lado-direito{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+            .lado-direito{
+                height: 60%;
+            }
+            .lado-direito .imagem{
+                height: 450px;
+            }
+            .hero{
+                display: flex;
+                justify-content: end;
+                height: 100vh;
+                align-items: end;
+            }
+            .about-content{
+                flex-direction: column;
+                justify-self: start;
+            }
+            .about-text p{
+                font-size: 100%;
+            }
+            .about #h3{
+                text-align: center;
+                display: flex;
+            }
+            .about h3:last-of-type{
+                display: none;
+            }
+            .hero #linha{
+                display: none;
+            }
+            .about #linha{
+                display: none;
+            }
+            #timedate{
+                display: none;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -1018,11 +1050,26 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-
             <div class="hero-content">
                 <div class="lado-esquerdo">
+                    <div id="timedate">
+                        <div class="dia">
+                            <a id="mon">January</a>
+                            <a id="d">1</a>
+                            <a>,</a>
+                            <a id="y">0</a><br />
+                        </div>
+                        <div class="hora">
+                            <a id="h">12</a>
+                            <a>:</a> 
+                            <a id="m">00</a>
+                            <a>:</a>
+                            <a id="s">00</a>
+                            <a>:</a>
+                            <a id="mi">000</a>
+                        </div>
+                    </div>
                     <h1 id="titulo">Karine <strong>Brandão</strong></h1>
-                    <div id="linha"></div>
                     <h1>Encontre o Imóvel dos Seus Sonhos</h1>
                     <p>Karina Brandão oferece as melhores oportunidades no mercado imobiliário com atendimento personalizado e transparente.</p>
                     <a href="https://api.whatsapp.com/send/?phone=555199917700&text&type=phone_number&app_absent=0" class="btn"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
@@ -1187,10 +1234,39 @@
             
             // Verifica ao carregar
             checkScroll();
+            Number.prototype.pad = function(n) {
+            return this.toString().padStart(n, "0");
+            };
+
+            function updateClock() {
+            var now = new Date();
+            var milli = now.getMilliseconds(),
+                sec = now.getSeconds(),
+                min = now.getMinutes(),
+                hou = now.getHours(),
+                mo = now.getMonth(),
+                dy = now.getDate(),
+                yr = now.getFullYear();
+
+            var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
+                            "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
             
+            var tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+                corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli.pad(3)];
+
+            for (var i = 0; i < tags.length; i++) {
+                const el = document.getElementById(tags[i]);
+                if (el && el.firstChild) {
+                el.firstChild.nodeValue = corr[i];
+                } else if (el) {
+                el.textContent = corr[i]; // fallback se não tiver firstChild
+                }
+            }
+            }
+
+            setInterval(updateClock, 100);
             // Verifica ao rolar
             window.addEventListener('scroll', checkScroll);
-            
             // Hero animation
             const heroContent = document.querySelector('.hero-content');
             setTimeout(() => {
